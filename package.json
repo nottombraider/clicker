@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "serve": "npm run build && serve -s build"
+    "serve": "npm run build && serve -s build",
+    "lint": "eslint src/**/*.tsx --max-warnings 0"
   },
   "eslintConfig": {
     "extends": "react-app"
