@@ -23,7 +23,8 @@ function App() {
         if(breakTimer) {
             countDown()
         }
-    }, [breakTimer, countDown])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [breakTimer])
 
 
 
