@@ -31,6 +31,7 @@ function App() {
   return (
     <div>
         <h1>Clicker Bublichek</h1>
+        <h2>check it out</h2>
 
         <div>{repeatCount}</div>
 
