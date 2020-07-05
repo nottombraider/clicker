@@ -23,12 +23,14 @@ function App() {
         if(breakTimer) {
             countDown()
         }
-    }, [breakTimer])
+    }, [breakTimer, countDown])
 
 
 
   return (
     <div>
+        <h1>Clicker Bublichek</h1>
+
         <div>{repeatCount}</div>
 
         <button onClick={ () => {
