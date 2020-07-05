@@ -1,24 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
+
+    const [repeatCount, setRepeatCount] = useState(0);
+    const [breakTimer, setBreakTimer] = useState(0);
+    const [breakTimerDisplay, setBreakTimerDisplay] = useState(0);
+    const [timerId, setTimerId] = useState();
+
+    const countDown = () => {
+        if(timerId){
+            clearTimeout(timerId);
+        }
+        const idTimeOut = setTimeout(() => {
+            console.log(breakTimer);
+            setBreakTimer(breakTimer - 1);
+        }, 1000);
+        setTimerId(idTimeOut);
+    };
+
+    useEffect(() => {
+        if(breakTimer) {
+            countDown()
+        }
+    }, [breakTimer])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <div>{repeatCount}</div>
+
+        <button onClick={ () => {
+            setRepeatCount(0);
+            setBreakTimer(0);
+        } }>Reset</button>
+
+        <div>
+            <span>If you need break timer set it before you start to count your repeats. </span>
+            <span>Break timer:</span>
+            <div>
+                <div>
+                    {breakTimer}
+                </div>
+
+                <button onClick={() => setBreakTimerDisplay(breakTimerDisplay + 1)}> + 1 minute</button>
+                <span>{breakTimerDisplay}</span>
+                <button onClick={() => breakTimerDisplay > 0 ? setBreakTimerDisplay(breakTimerDisplay - 1) : 0}> - 1 minute</button>
+            </div>
+        </div>
+
+        <button onClick={ () => {
+            setRepeatCount(repeatCount + 1);
+            setBreakTimer(breakTimerDisplay * 60);
+        } }>+ ADD</button>
+
+        <button onClick={() => repeatCount > 0 ? setRepeatCount(repeatCount - 1) : 0}>- MINUS</button>
+
     </div>
   );
 }
