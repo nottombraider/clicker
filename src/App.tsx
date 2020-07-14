@@ -29,59 +29,66 @@ function App() {
 
 
   return (
-    <div className="app">
-        <h1 className="title">Clicker Bublichek</h1>
+    <div className="app flex column app-landscape">
+        <header>
+            <h1 className="title">Clicker Bublichek</h1>
+        </header>
 
-        <div className="timer-container flex">
-            <span>If you need break timer set it before you start to count your repeats. </span>
-            <span>Break timer:</span>
-            <div>
-                <div className="number-display timer-count-down-display">
-                    {breakTimer}
+        <main className="main flex column row-landscape">
+
+            <div className="counters flex column">
+                <div className="counter-card column timer-container-landscape flex">
+                    <span>Break timer:</span>
+                    <div>
+                        <div className="number-display number-display-landscape timer-count-down-display">
+                            {breakTimer}
+                        </div>
+
+                        <button className="count-change-btn minute-minus-btn"
+                                onClick={() => breakTimerDisplay > 0 ? setBreakTimerDisplay(breakTimerDisplay - 1) : 0}> -1 min </button>
+                        <span className="number-display timer-number-display timer-number-display-landscape">{breakTimerDisplay}</span>
+                        <button className="count-change-btn minute-plus-btn"
+                                onClick={() => setBreakTimerDisplay(breakTimerDisplay + 1)}> +1 min </button>
+
+                    </div>
                 </div>
 
-                <button className="count-change-btn minute-minus-btn"
-                        onClick={() => breakTimerDisplay > 0 ? setBreakTimerDisplay(breakTimerDisplay - 1) : 0}> -1 min </button>
-                <span className="number-display timer-number-display">{breakTimerDisplay}</span>
-                <button className="count-change-btn minute-plus-btn"
-                        onClick={() => setBreakTimerDisplay(breakTimerDisplay + 1)}> +1 min </button>
+                <div className="counter-card repeat-counter-display-landscape ">
+                    <span>Your repeats:</span>
+                    <div className="number-display number-display-landscape repeat-number-display">{repeatCount}</div>
 
+                    <button className="reset-btn reset-btn-landscape"
+                            onClick={ () => {
+                                setRepeatCount(0);
+                                setBreakTimer(0);
+                                setBreakTimerDisplay(0);
+                            } }>
+                        <i className="fa fa-repeat" aria-hidden="true"/>
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <div className="repeat-counter-display">
-            <span>Your repeats:</span>
-            <div className="number-display repeat-number-display">{repeatCount}</div>
-
-            <button className="reset-btn"
-                    onClick={ () => {
-                        setRepeatCount(0);
-                        setBreakTimer(0);
-                        setBreakTimerDisplay(0);
-                    } }>
-                <i className="fa fa-repeat" aria-hidden="true"/>
-            </button>
-        </div>
-
-        <div className="button-container flex">
-            <button className="count-change-btn bottom-btn-style btn-minus btn-minus-desktop"
-                    onClick={() => repeatCount > 0 ? setRepeatCount(repeatCount - 1) : 0}>
-                <i className="fa fa-minus" aria-hidden="true"/>
-            </button>
-
-            <button className="count-change-btn bottom-btn-style btn-plus btn-plus-desktop"
-                    onClick={ () => {
-                        setRepeatCount(repeatCount + 1);
-                        setBreakTimer(breakTimerDisplay * 60);
-                    } }>
-                <i className="fa fa-plus" aria-hidden="true"/>
-            </button>
-        </div>
 
 
-        <div className="copyrights">
-            by @nottombraider
-        </div>
+            <div className="repeat-controls flex space-between column-landscape">
+                <button className="count-change-btn bottom-btn-style bottom-btn-style-landscape btn-minus btn-minus-landscape btn-minus-desktop"
+                        onClick={() => repeatCount > 0 ? setRepeatCount(repeatCount - 1) : 0}>
+                    <i className="fa fa-minus" aria-hidden="true"/>
+                </button>
+
+                <button className="count-change-btn bottom-btn-style bottom-btn-style-landscape btn-plus btn-plus-desktop"
+                        onClick={ () => {
+                            setRepeatCount(repeatCount + 1);
+                            setBreakTimer(breakTimerDisplay * 60);
+                        } }>
+                    <i className="fa fa-plus" aria-hidden="true"/>
+                </button>
+            </div>
+        </main>
+
+        <footer className="copyrights">
+                @nottombraider
+        </footer>
+
 
     </div>
   );

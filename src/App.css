@@ -8,46 +8,54 @@ body{
 
 .app{
   color: #ffffff;
+  max-width: 768px;
   height: 100vh;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .flex{
   display: flex;
 }
 
-.title{
-  margin: 0 auto 2rem;
+.column{
+  flex-direction: column;
 }
 
-.timer-container{
-  width: 75vw;
-  margin: auto;
-  flex-direction: column;
-  min-height: 15rem;
+.space-between{
+  justify-content: space-between;
+}
+
+.title{
+  margin: 0;
+}
+
+.main{
+  align-items: center;
+}
+
+.counter-card{
+  width: 18rem;
+  position: relative;
+  margin-top: 3rem;
 }
 
 .number-display{
   font-family: "Time Bomb", sans-serif;
   background-color: #ffffff;
   color: #303030;
-  min-width: fit-content;
   word-break: break-word;
   box-shadow: 0 0.4rem 1rem #303030;
   border-radius: .5rem;
-  padding: 1rem 1rem 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin-top: .5rem;
   font-size: 4rem;
-  margin-top: 1rem;
 }
 
 .timer-number-display{
   font-size: 2rem;
   padding: .5rem 2rem;
-}
-
-.repeat-counter-display{
-  width: 75vw;
-  margin: 1.5rem auto 3rem;
-  position: relative;
 }
 
 .reset-btn{
@@ -74,6 +82,11 @@ body{
   text-align: center;
 }
 
+.repeat-controls{
+  margin-top: 4rem;
+  width: 100vw;
+}
+
 .minute-plus-btn{
   border-radius: 0 .5rem .5rem 0;
 }
@@ -82,15 +95,10 @@ body{
   border-radius: .5rem 0 0 .5rem;
 }
 
-.button-container{
-  height: 25vh;
-  justify-content: space-between;
-  margin: 2.5rem 0;
-}
-
 .bottom-btn-style{
   font-size: 3rem;
-  padding: 0 4.5rem;
+  width: 9rem;
+  height: 10rem;
 }
 
 .btn-minus{
@@ -105,18 +113,79 @@ body{
 
 .copyrights{
   text-align: right;
-  margin: 1rem;
+  margin-right: .5rem;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
 }
 
-@media (min-width: 768px) {
-  .btn-minus-desktop{
-    flex-grow: 1;
-    margin-right: 1rem;
+
+@media screen and (min-width: 320px) and (max-width: 999px) and (orientation: landscape) {
+
+  .column-landscape{
+    flex-direction: column;
   }
 
-  .btn-plus-desktop{
-    flex-grow: 1;
-    margin-left: 1rem;
+  .row-landscape{
+    flex-direction: row;
+  }
+
+  /*.counters-container{*/
+  /*  width: 50vw;*/
+  /*}*/
+
+  /*.timer-container-landscape{*/
+  /*  width: auto;*/
+  /*}*/
+
+  .number-display-landscape{
+    font-size: 2.5rem;
+    padding: .5rem .5rem 1rem .5rem ;
+    margin-top: .5rem;
+  }
+
+  .timer-number-display-landscape{
+    font-size: 1.5rem;
+    padding: .5rem 1.5rem;
+  }
+
+  .repeat-counter-display-landscape{
+    width: auto;
+    margin: 0;
+    padding-top: .5rem;
+  }
+
+  .reset-btn-landscape{
+    padding: .5rem .65rem;
+  }
+
+  .btn-minus-landscape{
+    border-radius: 1rem 0 0 1rem;
   }
 }
 
+
+@media (min-width: 426px) {
+  .repeat-controls{
+    width: 26rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1023px) and (orientation: landscape) {
+  .repeat-controls {
+    width: 9rem;
+    margin-top: 0;
+  }
+
+  .main{
+    width: 100vw;
+    justify-content: space-between;
+  }
+
+  .counter-card{
+    margin-top: 0;
+  }
+
+  .counters{
+    margin-left: 3rem;
+  }
+}
