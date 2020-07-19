@@ -53,7 +53,7 @@ function App() {
                     </div>
                 </div>
 
-                <div className="counter-card repeat-counter-display-landscape ">
+                <div className="counter-card repeat-counter-display ">
                     <span>Your repeats:</span>
                     <div className="number-display number-display-landscape repeat-number-display">{repeatCount}</div>
 
@@ -85,9 +85,6 @@ function App() {
             </div>
         </main>
 
-        <footer className="copyrights">
-                @nottombraider
-        </footer>
 
 
     </div>
