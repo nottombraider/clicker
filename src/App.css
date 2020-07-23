@@ -119,7 +119,7 @@ body{
 
 
 
-@media screen and (min-width: 320px) and (max-width: 999px) and (orientation: landscape)  {
+@media screen and (min-width: 320px) and (max-width: 1023px) and (orientation: landscape)  {
   .app{
     min-height: unset;
     justify-content: unset;
