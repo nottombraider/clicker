@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import {wakeLockScreen} from "./index";
 
 function App() {
 
@@ -26,7 +27,14 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [breakTimer])
 
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            console.log('wakelock is called')
+            await wakeLockScreen();
+        }, 60 * 1000);
 
+        return () => clearInterval(interval);
+    })
 
   return (
     <div className="app flex column app-landscape">

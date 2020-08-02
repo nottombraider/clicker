@@ -21,3 +21,9 @@ serviceWorker.register({onUpdate: () => {
     onSuccess: () => {
     cogoToast.info("Application ready for offline");
 }});
+
+//@ts-ignore
+ export const wakeLockScreen = () => navigator.wakeLock.request('screen').then(wakeLock => {
+    wakeLock.release();
+});
+
