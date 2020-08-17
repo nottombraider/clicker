@@ -16,15 +16,16 @@
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "serve": "npm run build && serve -s build",
-    "lint": "eslint src/**/*.tsx --max-warnings 0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "lint": "eslint src/**/*.tsx --max-warnings 0 --fix",
+    "format": "prettier --write src"
   },
   "browserslist": {
     "production": [
