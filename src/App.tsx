@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import { wakeLockScreen } from './index'
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-175640106-1')
 
 function App() {
     const [repeatCount, setRepeatCount] = useState(0)
@@ -20,6 +22,9 @@ function App() {
 
         setTimerId(idTimeOut)
     }
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search)
+    }, [])
 
     useEffect(() => {
         if (breakTimer) {
@@ -29,7 +34,16 @@ function App() {
     }, [breakTimer])
 
     useEffect(() => {
-        wakeLockScreen().then(setWakeLockState)
+        wakeLockScreen()
+            .then(setWakeLockState)
+            .then(() =>
+                ReactGA.event({
+                    label: 'wakeLockWorks',
+                    value: Number(isWakeLock),
+                    action: 'works',
+                    category: 'wakeLock',
+                })
+            )
 
         document.addEventListener('visibilitychange', async () => {
             if (document.visibilityState === 'visible' && !isWakeLock) {

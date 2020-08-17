@@ -32,11 +32,11 @@ export const wakeLockScreen = async () => {
         const wakeLock = await navigator.wakeLock.request('screen')
 
         wakeLock.release()
-        
-return true
+
+        return true
     } catch (error) {
         console.log(error)
-        
-return false
+
+        return false
     }
 }
