@@ -22,6 +22,7 @@ function App() {
 
         setTimerId(idTimeOut)
     }
+
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search)
     }, [])
