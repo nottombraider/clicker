@@ -61,7 +61,7 @@ function App() {
                 <h1 className="title">Clicker Bublichek</h1>
                 {isWakeLock ? (
                     <div style={{ marginLeft: '1rem' }}>
-                        <i className="fa fa-lightbulb-o" aria-hidden="true"></i>
+                        <i className="fa fa-lightbulb-o" aria-hidden="true"> </i>
                     </div>
                 ) : null}
             </header>
