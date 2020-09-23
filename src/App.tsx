@@ -1,8 +1,13 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import { wakeLockScreen } from './index'
 import ReactGA from 'react-ga'
+//@ts-ignore
+import Worker from 'worker-loader!./ww.ts';
 ReactGA.initialize('UA-175640106-1')
+
+const worker = Worker();
 
 function App() {
     const [repeatCount, setRepeatCount] = useState(0)
@@ -22,6 +27,19 @@ function App() {
 
         setTimerId(idTimeOut)
     }
+
+    useEffect(() => {
+        worker.addEventListener('message', (event: any) => {
+            console.log('1---event', event.data.data);
+        })
+
+        worker.postMessage({
+            type: 'startCountdown',
+            data: 10
+        })
+
+        // console.log('-----', worker);
+    }, [])
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search)
