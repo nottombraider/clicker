@@ -6,6 +6,9 @@
 
 let intervalId: any;
 
+const sendNotification = () => {
+    new Notification('Break time run out')
+}
 
 const countdown = (time: number) => {
 
@@ -13,12 +16,13 @@ const countdown = (time: number) => {
         clearInterval(intervalId);
     }
 
-    let timeLeft = time;
+    let timeLeft = 10;
 
     intervalId = setInterval(() => {
 
         if(timeLeft === 0) {
             clearInterval(intervalId);
+            sendNotification();
             return;
         }
 

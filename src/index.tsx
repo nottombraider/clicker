@@ -21,8 +21,9 @@ serviceWorker.register({
             'Application updated. Restart application to receive latest features.'
         )
     },
-    onSuccess: () => {
-        cogoToast.info('Application ready for offline')
+    onSuccess: async () => {
+        cogoToast.info('Application ready for offline');
+        await Notification.requestPermission()
     },
 })
 

@@ -5,15 +5,20 @@ import { wakeLockScreen } from './index'
 import ReactGA from 'react-ga'
 //@ts-ignore
 import Worker from 'worker-loader!./ww.ts';
+import {useRequestPermissions} from "./requestPermissionHook";
 ReactGA.initialize('UA-175640106-1')
 
 const worker = Worker();
+
+
 
 function App() {
     const [repeatCount, setRepeatCount] = useState(0)
     const [breakTimer, setBreakTimer] = useState(0)
     const [breakMinAmount, setBreakMinAmount] = useState(0)
     const [isWakeLock, setWakeLockState] = useState(false)
+
+    useRequestPermissions();
 
     const countdownRepeatHandler = (time: number) => {
 
@@ -43,6 +48,8 @@ function App() {
         });
 
     }
+
+
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search)
