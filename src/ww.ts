@@ -8,9 +8,8 @@ let intervalId: any;
 
 
 const countdown = (time: number) => {
-    console.log('0', intervalId);
+
     if(intervalId){
-        console.log('1', intervalId);
         clearInterval(intervalId);
     }
 

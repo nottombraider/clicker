@@ -12,45 +12,42 @@ const worker = Worker();
 function App() {
     const [repeatCount, setRepeatCount] = useState(0)
     const [breakTimer, setBreakTimer] = useState(0)
-    const [breakTimerDisplay, setBreakTimerDisplay] = useState(0)
-    const [timerId, setTimerId] = useState()
+    const [breakMinAmount, setBreakMinAmount] = useState(0)
     const [isWakeLock, setWakeLockState] = useState(false)
 
-    const countDown = () => {
-        if (timerId) {
-            clearTimeout(timerId)
-        }
-        const idTimeOut = setTimeout(() => {
-            console.log(breakTimer)
-            setBreakTimer(breakTimer - 1)
-        }, 1000)
+    const countdownRepeatHandler = (time: number) => {
 
-        setTimerId(idTimeOut)
-    }
-
-    useEffect(() => {
-        worker.addEventListener('message', (event: any) => {
-            console.log('1---event', event.data.data);
-        })
+        setRepeatCount(repeatCount + 1);
+        setBreakTimer(time);
 
         worker.postMessage({
-            type: 'startCountdown',
-            data: 10
-        })
+                type: 'startCountdown',
+                data: time
+        });
 
-        // console.log('-----', worker);
-    }, [])
+        worker.addEventListener('message', (event: any) => {
+            setBreakTimer(event.data.data)
+        });
+
+    };
+
+    const resetCountdownHandler = () => {
+
+        setRepeatCount(0)
+        setBreakTimer(0)
+        setBreakMinAmount(0)
+
+        worker.postMessage({
+            type: 'resetCountdown',
+            data: breakMinAmount
+        });
+
+    }
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search)
     }, [])
 
-    useEffect(() => {
-        if (breakTimer) {
-            countDown()
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [breakTimer])
 
     useEffect(() => {
         wakeLockScreen()
@@ -96,9 +93,9 @@ function App() {
                             <button
                                 className="count-change-btn minute-minus-btn"
                                 onClick={() =>
-                                    breakTimerDisplay > 0
-                                        ? setBreakTimerDisplay(
-                                              breakTimerDisplay - 1
+                                    breakMinAmount > 0
+                                        ? setBreakMinAmount(
+                                              breakMinAmount - 1
                                           )
                                         : 0
                                 }
@@ -107,12 +104,12 @@ function App() {
                                 -1 min{' '}
                             </button>
                             <span className="number-display timer-number-display timer-number-display-landscape">
-                                {breakTimerDisplay}
+                                {breakMinAmount}
                             </span>
                             <button
                                 className="count-change-btn minute-plus-btn"
                                 onClick={() =>
-                                    setBreakTimerDisplay(breakTimerDisplay + 1)
+                                    setBreakMinAmount(breakMinAmount + 1)
                                 }
                             >
                                 {' '}
@@ -130,9 +127,7 @@ function App() {
                         <button
                             className="reset-btn reset-btn-landscape"
                             onClick={() => {
-                                setRepeatCount(0)
-                                setBreakTimer(0)
-                                setBreakTimerDisplay(0)
+                                resetCountdownHandler()
                             }}
                         >
                             <i className="fa fa-repeat" aria-hidden="true" />
@@ -155,8 +150,7 @@ function App() {
                     <button
                         className="count-change-btn bottom-btn-style bottom-btn-style-landscape btn-plus btn-plus-desktop"
                         onClick={() => {
-                            setRepeatCount(repeatCount + 1)
-                            setBreakTimer(breakTimerDisplay * 60)
+                            countdownRepeatHandler(breakMinAmount * 60);
                         }}
                     >
                         <i className="fa fa-plus" aria-hidden="true" />
