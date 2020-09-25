@@ -16,7 +16,7 @@ const countdown = (time: number) => {
         clearInterval(intervalId);
     }
 
-    let timeLeft = 10;
+    let timeLeft = time;
 
     intervalId = setInterval(() => {
 
