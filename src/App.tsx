@@ -81,11 +81,6 @@ function App() {
         <div className="app flex column app-landscape">
             <header className="flex" style={{ alignItems: 'center' }}>
                 <h1 className="title">Clicker Bublichek</h1>
-                {isWakeLock ? (
-                    <div style={{ marginLeft: '1rem' }}>
-                        <i className="fa fa-lightbulb-o" aria-hidden="true"> </i>
-                    </div>
-                ) : null}
             </header>
 
             <main className="main flex column row-landscape">
