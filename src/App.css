@@ -101,7 +101,7 @@ body {
 }
 
 .bottom-btn-style {
-    font-size: 3rem;
+    font-size: 5rem;
     width: 9rem;
     height: 9rem;
 }
@@ -109,6 +109,8 @@ body {
 .btn-minus {
     border-radius: 0 1rem 1rem 0;
     background-color: #513e92;
+    font-size: 6rem;
+    padding-bottom: 1rem;
 }
 
 .btn-plus {

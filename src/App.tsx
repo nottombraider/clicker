@@ -146,7 +146,7 @@ function App() {
                                 : 0
                         }
                     >
-                        {<i className="fa fa-minus" aria-hidden="true" /> || <b>+</b>}
+                        <b>-</b>
                     </button>
 
                     <button
@@ -155,7 +155,7 @@ function App() {
                             countdownRepeatHandler(breakMinAmount * 60);
                         }}
                     >
-                        {<i className="fa fa-plus" aria-hidden="true" /> || <b>-</b>}
+                        <b>+</b>
                     </button>
                 </div>
             </main>
