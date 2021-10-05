@@ -132,7 +132,7 @@ function App() {
                                 resetCountdownHandler()
                             }}
                         >
-                            <i className="fa fa-repeat" aria-hidden="true" />
+                            <span>&#x27F3;</span>
                         </button>
                     </div>
                 </div>

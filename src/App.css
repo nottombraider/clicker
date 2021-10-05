@@ -65,8 +65,8 @@ body {
     border: 1px solid #536e8e;
     cursor: pointer;
     color: #ffffff;
-    font-size: 1rem;
-    padding: 1rem 1.15rem;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     text-shadow: 0 1px 0 #513f92;
     position: absolute;
@@ -152,7 +152,8 @@ body {
     }
 
     .reset-btn-landscape {
-        padding: 0.5rem 0.65rem;
+        padding: 0.5rem 0.85rem;
+        font-size: 1.5rem;
     }
 
     .btn-minus-landscape {
